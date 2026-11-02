@@ -10,3 +10,5 @@ filed/*
 drafts/*
 !drafts/.gitkeep
 students.xlsx
+inbox/*
+!inbox/.gitkeep
