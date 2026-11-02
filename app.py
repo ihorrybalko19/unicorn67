@@ -19,10 +19,8 @@ st.sidebar.header("Control Panel")
 
 if st.sidebar.button("🛠️ 1. Generate Test Emails"):
     with st.spinner("Generating sample .eml files and PDFs in inbox/..."):
-        # Тут ти зможеш імпортувати свою функцію генерації:
-        # from data_generator import generate_test_data
-        # generate_test_data()
-        time.sleep(1.5)
+        from data_generator import generate_test_data
+        generate_test_data()
     st.sidebar.success("Test data generated successfully!")
 
 if st.sidebar.button("🚀 2. Process Entire Inbox"):
