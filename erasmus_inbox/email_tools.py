@@ -1,3 +1,5 @@
+import dotenv
+dotenv.load_dotenv()
 """Email & file-system tools (owned by Person 2).
 
 Pipeline: inbox/*.eml -> parse (stdlib email) -> Gemini inspects attachments ->
@@ -20,7 +22,7 @@ ALLOWED_MIME = {
     "image/jpeg": ".jpg",
     "image/png": ".png",
 }
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-3.5-flash"
 
 # attachment_id -> {"bytes": ..., "ext": ...}; entries are removed on save.
 _ATTACHMENT_CACHE: dict[str, dict] = {}
