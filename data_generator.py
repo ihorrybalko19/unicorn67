@@ -24,7 +24,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
-INBOX_DIR = Path("inbox")
+INBOX_DIR = Path(__file__).resolve().parent / "inbox"
 OFFICE_EMAIL = "erasmus@nordbaltic.example"
 HOME_UNIVERSITY = "Nordbaltic University, Tallinn, Estonia"
 ACADEMIC_YEAR = "2026-27"
@@ -445,7 +445,7 @@ def build_email(number: int, spec: dict) -> tuple:
     return message.as_bytes(), expected
 
 
-def main() -> None:
+def generate_test_data() -> None:
     INBOX_DIR.mkdir(exist_ok=True)
     results = []
     for number, spec in enumerate(EMAILS, start=1):
@@ -462,4 +462,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    generate_test_data()

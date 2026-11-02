@@ -15,7 +15,7 @@ inbox/*.eml --> erasmus_inbox agent (Google ADK + Gemini)
                   |-- faq.md               --> drafts/DRAFT_*.txt for staff to approve
                   `-- not in the FAQ       --> drafts/ESCALATE_*.txt, "I'll pass this to staff"
 
-app.py reads those outputs and shows them on a read-only dashboard.
+pages/Results.py reads those outputs and shows them on a read-only page of the app.py Streamlit UI.
 ```
 
 ## Setup
@@ -34,7 +34,7 @@ Copy `.env.example` to `erasmus_inbox/.env` and add a Gemini API key from [AI St
 
 ## Run the demo
 
-Open the dashboard. It updates by itself while the agent works:
+Open the Streamlit UI and choose **Results** in the sidebar. The page updates by itself while the agent works:
 
 ```bash
 streamlit run app.py --server.address 127.0.0.1
@@ -46,7 +46,9 @@ In a second terminal, start the agent, choose `erasmus_inbox` and ask it to proc
 adk web
 ```
 
-To reset the test emails, run `python data_generator.py`. It rewrites the files in `inbox/`.
+To reset the test emails, run `python data_generator.py`. It rewrites the files in `inbox/`. Empty `filed/` before a repeat run, because `save_attachment` never overwrites and adds a `_v2` file instead.
+
+> On Windows with Smart App Control on, the `pandas` DLLs can be blocked and the `app.py` page fails to load. The Results page does not use `pandas`, so it still works from the sidebar or directly with `streamlit run pages/Results.py`.
 
 ## Test data
 
@@ -67,6 +69,6 @@ To reset the test emails, run `python data_generator.py`. It rewrites the files 
 
 The FAQ the agent answers from is in [`faq.md`](faq.md).
 
-## Dashboard
+## Results page
 
-`app.py` compares `filed/` and `drafts/` with `inbox/expected_results.json`, shows `students.xlsx` as it is, and marks any result that differs from what was expected. It changes nothing and sends nothing.
+`pages/Results.py` compares `filed/` and `drafts/` with `inbox/expected_results.json`, shows `students.xlsx` as it is, and marks any result that differs from what was expected. It changes nothing and sends nothing.
