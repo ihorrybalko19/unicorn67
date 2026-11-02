@@ -1,0 +1,12 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+temp_attachments/*
+!temp_attachments/.gitkeep
+filed/*
+!filed/.gitkeep
+drafts/*
+!drafts/.gitkeep
+students.xlsx

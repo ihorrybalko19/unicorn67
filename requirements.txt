@@ -1,0 +1,6 @@
+google-adk
+google-genai
+openpyxl
+reportlab
+pillow
+pydantic
